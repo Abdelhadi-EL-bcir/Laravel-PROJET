@@ -7,15 +7,29 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use App\Models\News;
+use App\Models\Messages;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function redirect(){
         if(Auth::id()){
            if(Auth::user()->usertype =='0'){
-               $doctors = doctor::all();
-               return view('user.home' , compact('doctors'));
+               $data = news::all();
+               $doctors = doctor::all();  
+               return view('user.home' , compact('doctors') , compact('data') ) ; 
            }else{
-            return view('admin.home');
+            $doctors = doctor::all();
+            $appointments = appointment::all();
+            $messages = messages::all();
+            $userData = appointment::select(DB::raw("COUNT(*) as count"))
+                    ->whereYear('created_at', date('Y'))
+                    ->groupBy(DB::raw("Month(created_at)"))
+                    ->pluck('count');
+            $messagesNumber = $messages->count();
+            $doctorsNumber = $doctors->count();
+            $appointmentNumber = $appointments->count();
+            return view('admin.home' , compact('messagesNumber' , 'doctorsNumber' ,'appointmentNumber' , 'userData' ));
            }
         }
         else{
@@ -28,7 +42,8 @@ class HomeController extends Controller
             return redirect('home');
         }else{
             $doctors = doctor::all();
-            return view('user.home' , compact('doctors'));
+            $data = news::all();
+            return view('user.home' , compact('doctors' , 'data'));
         }
     }
 
@@ -37,12 +52,17 @@ class HomeController extends Controller
         $data->name = $request->name ; 
         $data->email = $request->email ; 
         $data->phone = $request->phone ; 
-        $data->date = $request->date ; 
         $data->message = $request->message ; 
         $data->doctor = $request->doctor ; 
         $data->status = 'In pregress' ; 
         if(Auth::id()){
           $data->user_id = Auth::user()->id;
+        }
+        $previousData = appointment::all(); 
+        foreach($previousData as $appointment){
+            if(strcmp($appointment->date , $data->date ) == 0){
+               return redirect()->back()->with('message' , 'time all ready reserved');  
+            }
         }
         $data->save();
         return redirect()->back()->with('message' , 'Appointment request seccecsfl , we will conact you');
@@ -50,17 +70,35 @@ class HomeController extends Controller
 
     public function myAppointment(){
         if(Auth::id()){
-            $userId = Auth::user()->id ; 
+            $userId = Auth::user()->id ;
             $appointments = appointment::where('user_id' , $userId)->get() ; 
             return view('user.my_appointment' , compact('appointments' , $appointments));
         }else{
             return redirect()->back();
         }
     }
+    
+    public function about(){
+       return view('user.about') ; 
+    }
+
+    public function contact(){
+       return view('user.contact') ; 
+    }
 
     public function cancelAppointment($id){
         $data = appointment::find($id);
         $data->delete();
          return redirect()->back()->with('message'  , 'Appointment deleted successfully');
+    }
+
+    public function sendMessage(Request $request){
+        $data = new messages ; 
+        $data->name = $request->name ; 
+        $data->email = $request->email ; 
+        $data->subject = $request->subject ; 
+        $data->message	 = $request->msg ;  
+        $data->save();
+        return redirect()->back()->with('message' , 'Message, Sent!');
     }
 }

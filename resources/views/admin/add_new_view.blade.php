@@ -45,9 +45,8 @@
                                     <input type="text" name="description" class="form-control" placeholder="description">
                                 </div>
                                 <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-                                    <input type="file" name="file" class="form-control" placeholder="room">
-                                </div>
-                                <input type="hidden" value="" />
+                                    <input type="file" name="file" class="form-control" >
+                                </div>                 
                             </div>
 
                             <input type="submit" value="Add" class="btn btn-primary"

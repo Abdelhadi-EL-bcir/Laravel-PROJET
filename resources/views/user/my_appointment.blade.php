@@ -70,16 +70,10 @@
                             <a class="nav-link" href="{{url('/')}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About Us</a>
+                            <a class="nav-link" href="{{url('/about')}}">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="doctors.html">Doctors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blog.html">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{url('/contact')}}">Contact</a>
                         </li>
                         @if(Route::has('login'))
 
@@ -143,7 +137,7 @@
                         <td>{{$appointment->message}}</td>
                         <td>{{$appointment->status}}</td>
                         <td class="text-center">
-                            <a href="{{url('cancel_appointment' , $appointment->id )}}">
+                            <a href="{{url('delete_appointment' , $appointment->id )}}">
                                 <button onclick="return confirm('are you sure ?')" type="button" class="btn btn-danger"
                                     style="color : red ; ">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -162,58 +156,7 @@
             </table>
         </div>
     </main>
-    <footer class="page-footer">
-        <div class="container">
-            <div class="row px-md-3">
-                <div class="col-sm-6 col-lg-3 py-3">
-                    <h5>Company</h5>
-                    <ul class="footer-menu">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Career</a></li>
-                        <li><a href="#">Editorial Team</a></li>
-                        <li><a href="#">Protection</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-lg-3 py-3">
-                    <h5>More</h5>
-                    <ul class="footer-menu">
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Join as Doctors</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-lg-3 py-3">
-                    <h5>Our partner</h5>
-                    <ul class="footer-menu">
-                        <li><a href="#">One-Fitness</a></li>
-                        <li><a href="#">One-Drugs</a></li>
-                        <li><a href="#">One-Live</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-lg-3 py-3">
-                    <h5>Contact</h5>
-                    <p class="footer-link mt-2">351 Willow Street Franklin, MA 02038</p>
-                    <a href="#" class="footer-link">701-573-7582</a>
-                    <a href="#" class="footer-link">healthcare@temporary.net</a>
-
-                    <h5 class="mt-3">Social Media</h5>
-                    <div class="footer-sosmed mt-3">
-                        <a href="#" target="_blank"><span class="mai-logo-facebook-f"></span></a>
-                        <a href="#" target="_blank"><span class="mai-logo-twitter"></span></a>
-                        <a href="#" target="_blank"><span class="mai-logo-google-plus-g"></span></a>
-                        <a href="#" target="_blank"><span class="mai-logo-instagram"></span></a>
-                        <a href="#" target="_blank"><span class="mai-logo-linkedin"></span></a>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <p id="copyright">Copyright &copy; 2020 <a href="https://macodeid.com/" target="_blank">MACode ID</a>. All
-                right reserved</p>
-        </div>
-    </footer>
+    @include('user.footer')
 
     <script src="../assets/js/jquery-3.5.1.min.js"></script>
 

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        
+        <link rel="icon" type="image/x-icon" href="https://img.icons8.com/office/16/null/globe.png">
         <title>{{ config('app.name', 'Laravel') }}</title>
       
         <!-- Fonts -->
