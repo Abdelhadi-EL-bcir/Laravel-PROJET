@@ -6,9 +6,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="icon" type="image/x-icon" href="https://img.icons8.com/dusk/64/null/home--v2.png">
 
    <meta name="copyright" content="MACode ID, https://macodeid.com/">
+   <link rel="icon" type="image/x-icon" href="https://img.icons8.com/dusk/64/null/home--v2.png">
 
    <title>One Health - Medical Center HTML5 Template</title>
    <link rel="stylesheet" href="../assets/css/theme.css">
@@ -25,17 +25,9 @@
    <!-- Back to top button -->
    <div class="back-to-top"></div>
 
-   @include('user.header')
-
-  <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);">
-    <div class="banner-section">
-      <div class="container text-center wow fadeInUp">
-        <h1 class="font-weight-normal">About Us</h1>
-      </div> <!-- .container -->
-    </div> <!-- .banner-section -->
-  </div> <!-- .page-banner -->
-
-  <div class="page-section bg-light">
+   @include('doctorHome.header')
+   
+   <div class="page-section bg-light">
     <div class="container">
       <div class="row">
         <div class="col-md-4 py-3 wow zoomIn">
@@ -81,9 +73,16 @@
     </div>
   </div>
 
-  
 
-  @include('user.footer')
+   <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div class="container">
+                    @include('user.latest')
+                </div>
+            </div>
+    </div>
+
+   @include('user.footer')
 
    <script src="../assets/js/jquery-3.5.1.min.js"></script>
 

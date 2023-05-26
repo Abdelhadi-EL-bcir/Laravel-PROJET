@@ -7,16 +7,16 @@
       @foreach($doctors as $doctor)
       <div class="item">
           <div class="card-doctor">
-            <div class="header">
-              <img src="doctorimage/{{$doctor->image}}" alt="">
-              <div class="meta">
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
-              </div>
+            <div class="header">     
+                <img src="doctorimage/{{$doctor->image}}" alt="">    
             </div>
             <div class="body">
               <p class="text-xl mb-0">{{$doctor->name}}</p>
               <span class="text-sm text-grey">{{$doctor->specialty}}</span>
+              <br/>
+              <span>
+              <a href="{{url('get_doctor_page' , $doctor->id)}}" > Read more... </a>
+              </span>
             </div>
           </div>
         </div>

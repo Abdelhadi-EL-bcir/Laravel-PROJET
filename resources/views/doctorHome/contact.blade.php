@@ -8,7 +8,8 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
    <meta name="copyright" content="MACode ID, https://macodeid.com/">
-      <link rel="icon" type="image/x-icon" href="https://img.icons8.com/dusk/64/null/home--v2.png">
+   <link rel="icon" type="image/x-icon" href="https://img.icons8.com/dusk/64/null/home--v2.png">
+
    <title>One Health - Medical Center HTML5 Template</title>
    <link rel="stylesheet" href="../assets/css/theme.css">
    <link rel="stylesheet" href="../assets/css/maicons.css">
@@ -24,14 +25,14 @@
    <!-- Back to top button -->
    <div class="back-to-top"></div>
 
-   @include('user.header')
-
-  
-
-  <div class="page-section">
+   @include('doctorHome.header')
+    
+   <div class="page-section">
     <div class="container">
       <center>
-        <img src="../assets/img/contact.png" width="100px" height="100px" alt="contact-logo"/>
+        <h1>
+          Contact ADMIN
+        </h1>
       </center>
       @if(session()->has('message'))
 
@@ -67,10 +68,6 @@
       </form>
     </div>
   </div>
-
-  
-
-   <!-- .banner-home -->
 
    @include('user.footer')
 
