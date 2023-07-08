@@ -208,8 +208,8 @@
                         text: 'analytics'
                     },
                     xAxis: {
-                        categories: ['April', 'May', 'June', 'July', 'August', 'September',
-                            'October', 'November', 'December', 'January', 'February', 'March'
+                        categories: [ 'May', 'June', 'July', 'August', 'September',
+                            'October', 'November', 'December', 'January', 'February', 'March' ,'April'
                         ]
                     },
                     yAxis: {
